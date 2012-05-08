@@ -1,0 +1,197 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: sp-rm\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-05-04 09:45-0500\n"
+"PO-Revision-Date: 2012-05-04 09:46-0500\n"
+"Last-Translator: Anthony <anthony@dlgresults.com>\n"
+"Language-Team: Smarty Pants Plugins <support@smartypantsplugins.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED KINGDOM\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../index.php:139
+msgid "Rentals"
+msgstr ""
+
+#: ../index.php:140
+#: ../admin/developments.php:277
+#: ../admin/options.php:7
+msgid "Applications"
+msgstr ""
+
+#: ../index.php:141
+#: ../admin/developments.php:253
+msgid "Listings"
+msgstr ""
+
+#: ../admin/applications.php:19
+msgid "Applications List"
+msgstr ""
+
+#: ../admin/applications.php:27
+#: ../admin/developments.php:42
+#: ../admin/developments.php:121
+#: ../admin/developments.php:231
+#: ../admin/developments.php:278
+msgid "Name"
+msgstr ""
+
+#: ../admin/applications.php:28
+msgid "Date"
+msgstr ""
+
+#: ../admin/applications.php:29
+msgid "Phone"
+msgstr ""
+
+#: ../admin/applications.php:31
+#: ../admin/developments.php:232
+#: ../admin/developments.php:280
+msgid "Action"
+msgstr ""
+
+#: ../admin/applications.php:46
+#: ../admin/developments.php:243
+#: ../admin/developments.php:294
+msgid "Delete"
+msgstr ""
+
+#: ../admin/applications.php:47
+#: ../admin/developments.php:244
+#: ../admin/developments.php:295
+msgid "View"
+msgstr ""
+
+#: ../admin/applications.php:49
+msgid "Export PDF"
+msgstr ""
+
+#: ../admin/developments.php:125
+msgid "Development"
+msgstr ""
+
+#: ../admin/developments.php:139
+#: ../admin/developments.php:279
+msgid "Address"
+msgstr ""
+
+#: ../admin/developments.php:142
+msgid "Unit"
+msgstr ""
+
+#: ../admin/developments.php:145
+msgid "City"
+msgstr ""
+
+#: ../admin/developments.php:148
+msgid "State"
+msgstr ""
+
+#: ../admin/developments.php:151
+msgid "Price"
+msgstr ""
+
+#: ../admin/developments.php:155
+msgid "Featured Image"
+msgstr ""
+
+#: ../admin/developments.php:170
+msgid "Save"
+msgstr ""
+
+#: ../admin/developments.php:191
+msgid "Developments"
+msgstr ""
+
+#: ../admin/developments.php:225
+msgid "Add Development"
+msgstr ""
+
+#: ../admin/developments.php:230
+#: ../admin/developments.php:276
+msgid "ID"
+msgstr ""
+
+#: ../admin/developments.php:271
+msgid "Add Listing"
+msgstr ""
+
+#: ../admin/options.php:6
+msgid "Edit Options"
+msgstr ""
+
+#: ../admin/options.php:8
+msgid "Listing"
+msgstr ""
+
+#: ../admin/options.php:60
+msgid "Application full url"
+msgstr ""
+
+#: ../admin/options.php:60
+msgid "This is the full url to your applications page which is needed to redirect users who are applying for the application. Please put the shortcode [sp_rm_listing_applications] on the page."
+msgstr ""
+
+#: ../admin/options.php:64
+msgid "Thank you page"
+msgstr ""
+
+#: ../admin/options.php:64
+msgid "Full url for the thank you page after the user submits an app."
+msgstr ""
+
+#: ../admin/options.php:68
+msgid "Emails"
+msgstr ""
+
+#: ../admin/options.php:68
+msgid "This is where you want the submitted application to go, comma seperate for multiple emails."
+msgstr ""
+
+#: ../admin/options.php:72
+msgid "Enable SSN?"
+msgstr ""
+
+#: ../admin/options.php:72
+msgid "Would you like to take the users social security number? Please only use this features if you are using an SSL Certificate as you are responsibile for your own data. The SSN is encrypted into the database using  advanced binary encryption methods."
+msgstr ""
+
+#: ../admin/options.php:77
+msgid "Save Options"
+msgstr ""
+
+#: ../user/applications.php:34
+msgid "Application for"
+msgstr ""
+
+#: ../user/applications.php:274
+msgid "New Rental Application"
+msgstr ""
+
+#: ../user/applications.php:290
+#: ../user/applications.php:299
+msgid "Property Interested In"
+msgstr ""
+
+#: ../user/applications.php:300
+msgid "Select a property"
+msgstr ""
+
+#: ../user/shortcodes.php:47
+msgid "Submit An Application"
+msgstr ""
+
+#: ../user/shortcodes.php:85
+msgid "Rent"
+msgstr ""
+
+#: ../user/shortcodes.php:107
+msgid "Apply"
+msgstr ""
+
