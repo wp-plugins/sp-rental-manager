@@ -33,7 +33,7 @@ Premium Features
 * Ability to upload multiple images
 * Integrate google maps into your listing view page
 * More to come! 
-
+* Click here to  learn more about the premium version: http://smartypantsplugins.com/sp-rental-manager-plugin/
 
 == Installation ==
 
