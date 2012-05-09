@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sp-rm\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-04 09:45-0500\n"
-"PO-Revision-Date: 2012-05-04 09:46-0500\n"
+"POT-Creation-Date: 2012-05-09 10:31-0500\n"
+"PO-Revision-Date: 2012-05-09 10:31-0500\n"
 "Last-Translator: Anthony <anthony@dlgresults.com>\n"
 "Language-Team: Smarty Pants Plugins <support@smartypantsplugins.com>\n"
 "MIME-Version: 1.0\n"
@@ -15,61 +15,62 @@ msgstr ""
 "X-Poedit-Country: UNITED KINGDOM\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../index.php:139
+#: ../index.php:140
 msgid "Rentals"
 msgstr ""
 
-#: ../index.php:140
-#: ../admin/developments.php:277
+#: ../index.php:141
+#: ../admin/applications.php:17
+#: ../admin/developments.php:284
 #: ../admin/options.php:7
 msgid "Applications"
 msgstr ""
 
-#: ../index.php:141
-#: ../admin/developments.php:253
+#: ../index.php:142
+#: ../admin/developments.php:260
 msgid "Listings"
 msgstr ""
 
-#: ../admin/applications.php:19
+#: ../admin/applications.php:13
 msgid "Applications List"
 msgstr ""
 
-#: ../admin/applications.php:27
+#: ../admin/applications.php:32
 #: ../admin/developments.php:42
 #: ../admin/developments.php:121
-#: ../admin/developments.php:231
-#: ../admin/developments.php:278
+#: ../admin/developments.php:237
+#: ../admin/developments.php:285
 msgid "Name"
 msgstr ""
 
-#: ../admin/applications.php:28
+#: ../admin/applications.php:33
 msgid "Date"
 msgstr ""
 
-#: ../admin/applications.php:29
+#: ../admin/applications.php:34
 msgid "Phone"
 msgstr ""
 
-#: ../admin/applications.php:31
-#: ../admin/developments.php:232
-#: ../admin/developments.php:280
+#: ../admin/applications.php:36
+#: ../admin/developments.php:238
+#: ../admin/developments.php:287
 msgid "Action"
 msgstr ""
 
-#: ../admin/applications.php:46
-#: ../admin/developments.php:243
-#: ../admin/developments.php:294
+#: ../admin/applications.php:51
+#: ../admin/developments.php:249
+#: ../admin/developments.php:301
 msgid "Delete"
 msgstr ""
 
-#: ../admin/applications.php:47
-#: ../admin/developments.php:244
-#: ../admin/developments.php:295
+#: ../admin/applications.php:52
+#: ../admin/developments.php:250
+#: ../admin/developments.php:302
 msgid "View"
 msgstr ""
 
-#: ../admin/applications.php:49
-msgid "Export PDF"
+#: ../admin/applications.php:54
+msgid "Print"
 msgstr ""
 
 #: ../admin/developments.php:125
@@ -77,7 +78,7 @@ msgid "Development"
 msgstr ""
 
 #: ../admin/developments.php:139
-#: ../admin/developments.php:279
+#: ../admin/developments.php:286
 msgid "Address"
 msgstr ""
 
@@ -101,25 +102,29 @@ msgstr ""
 msgid "Featured Image"
 msgstr ""
 
-#: ../admin/developments.php:170
+#: ../admin/developments.php:172
 msgid "Save"
 msgstr ""
 
-#: ../admin/developments.php:191
+#: ../admin/developments.php:197
 msgid "Developments"
 msgstr ""
 
-#: ../admin/developments.php:225
+#: ../admin/developments.php:231
 msgid "Add Development"
 msgstr ""
 
-#: ../admin/developments.php:230
-#: ../admin/developments.php:276
+#: ../admin/developments.php:236
+#: ../admin/developments.php:283
 msgid "ID"
 msgstr ""
 
-#: ../admin/developments.php:271
+#: ../admin/developments.php:278
 msgid "Add Listing"
+msgstr ""
+
+#: ../admin/developments.php:303
+msgid "Download All Applications"
 msgstr ""
 
 #: ../admin/options.php:6
@@ -130,68 +135,100 @@ msgstr ""
 msgid "Listing"
 msgstr ""
 
-#: ../admin/options.php:60
+#: ../admin/options.php:109
 msgid "Application full url"
 msgstr ""
 
-#: ../admin/options.php:60
+#: ../admin/options.php:109
 msgid "This is the full url to your applications page which is needed to redirect users who are applying for the application. Please put the shortcode [sp_rm_listing_applications] on the page."
 msgstr ""
 
-#: ../admin/options.php:64
+#: ../admin/options.php:113
 msgid "Thank you page"
 msgstr ""
 
-#: ../admin/options.php:64
+#: ../admin/options.php:113
 msgid "Full url for the thank you page after the user submits an app."
 msgstr ""
 
-#: ../admin/options.php:68
+#: ../admin/options.php:117
 msgid "Emails"
 msgstr ""
 
-#: ../admin/options.php:68
+#: ../admin/options.php:117
 msgid "This is where you want the submitted application to go, comma seperate for multiple emails."
 msgstr ""
 
-#: ../admin/options.php:72
+#: ../admin/options.php:121
 msgid "Enable SSN?"
 msgstr ""
 
-#: ../admin/options.php:72
+#: ../admin/options.php:121
 msgid "Would you like to take the users social security number? Please only use this features if you are using an SSL Certificate as you are responsibile for your own data. The SSN is encrypted into the database using  advanced binary encryption methods."
 msgstr ""
 
-#: ../admin/options.php:77
+#: ../admin/options.php:126
+msgid "Disclaimer"
+msgstr ""
+
+#: ../admin/options.php:126
+msgid "This is the disclaimer on the application (legal terms)"
+msgstr ""
+
+#: ../admin/options.php:135
+msgid "Google Maps API Key"
+msgstr ""
+
+#: ../admin/options.php:135
+msgid "Use this funciton only if you want to integrate google maps into your posts. Remove it to disable google maps!"
+msgstr ""
+
+#: ../admin/options.php:139
+msgid "Google Map Size"
+msgstr ""
+
+#: ../admin/options.php:139
+msgid "This is the settings for the map size of the goolge map box,numbers only. Sizes are in pixels."
+msgstr ""
+
+#: ../admin/options.php:151
 msgid "Save Options"
+msgstr ""
+
+#: ../premium/admin/developments.php:24
+msgid "Add additional image"
+msgstr ""
+
+#: ../premium/admin/developments.php:58
+msgid "Image"
 msgstr ""
 
 #: ../user/applications.php:34
 msgid "Application for"
 msgstr ""
 
-#: ../user/applications.php:274
+#: ../user/applications.php:273
 msgid "New Rental Application"
 msgstr ""
 
-#: ../user/applications.php:290
-#: ../user/applications.php:299
+#: ../user/applications.php:289
+#: ../user/applications.php:298
 msgid "Property Interested In"
 msgstr ""
 
-#: ../user/applications.php:300
+#: ../user/applications.php:299
 msgid "Select a property"
 msgstr ""
 
-#: ../user/shortcodes.php:47
+#: ../user/shortcodes.php:52
 msgid "Submit An Application"
 msgstr ""
 
-#: ../user/shortcodes.php:85
+#: ../user/shortcodes.php:98
 msgid "Rent"
 msgstr ""
 
-#: ../user/shortcodes.php:107
+#: ../user/shortcodes.php:120
 msgid "Apply"
 msgstr ""
 
