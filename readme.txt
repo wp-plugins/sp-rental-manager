@@ -46,7 +46,13 @@ Premium Features
 * Show Rental Listings for specific development [sp_rm_show_available_listings development="X"]  Where X is the ID of your development
 * Rental Application page: [sp_rm_listing_applications]
 
+== Screenshots ==
 
+1. Developments and listings view
+2. Filled out application
+3. User listings view page
+4. User viewing listing page (free version)
+5. User filling out application
 
 == Changelog ==
 
