@@ -51,7 +51,7 @@ function sp_rm_show_applications($id = NULL){
 		<td><a  class="button" href="admin.php?page=sp-rm-applications&function=delete&id='.$r[$i]['id'].'">'.__("Delete","sp-rm").'</a>  
 	<a class="button" style="margin-left:20px" href="admin.php?page=sp-rm-applications&function=edit&id='.$r[$i]['id'].'">'.__("View","sp-rm").'</a> 
 	
-	<a class="button" style="margin-left:20px" href="../wp-content/plugins/sp-rental-manager/download.php?function=pdf&id='.$r[$i]['id'].'">'.__("Export PDF","sp-rm").'</a>
+	<a class="button" style="margin-left:20px" href="../wp-content/plugins/sp-rental-manager/download.php?function=pdf&id='.$r[$i]['id'].'" target="_blank">'.__("Print","sp-rm").'</a>
 	</td>
 		</tr>';
 		

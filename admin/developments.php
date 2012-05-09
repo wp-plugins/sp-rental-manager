@@ -180,75 +180,9 @@ $content .= ''. $portfolio_list_dev .'
 ';	
 
 if($r[0]['id'] != ""){
-	
-$content .='
-
-<script type="text/javascript">
-	jQuery(function() {
-	
-	
-	wp_makeFileUploadAddImage("#featured_upload_image","#additional_image");
-		
-	});
-		
-		</script>
-
-<h1>Additional Images</h1><div style="padding:5px"><input id="featured_upload_image" class="button" value="'.__("Add additional image","sp-rm").'" /></div>
-<div style="display:none;padding:10px;background-color:#eef7ef;border:1px solid #eef7ef;margin:10px;" class="displayimg">
-<form name="image_form" action="admin.php?page=sp-rm-developments&function=manage-listing&id='.$_GET['id'].'" method="post">
-<h3>Preview</h3>
-<input type="submit" name="add-image" value="Click here to add this image!"><br>
-<img src="" class="imgsrc_add">
-<input type="hidden" name="additional_image" id="additional_image">
-</form>
-</div>
-';	
-	
-	
-	if($_POST['add-image'] != ""){
-		
-		add_option('sp_rm_images_'.$r[0]['id'].'_'.time().'', $_POST['additional_image']);
+	if(RM_PREMIUM == 1){
+	$content .=sp_rm_admin_multiple_images($r[0]['id']);
 	}
-	
-	if($_GET['delete-image'] != ""){
-	$wpdb->query("DELETE FROM ".$wpdb->prefix . "options WHERE option_id = '".$wpdb->escape($_GET['delete-image'])."'	");		
-
-	}
-	
-	$r_images = $wpdb->get_results("SELECT *  FROM ".$wpdb->prefix . "options where option_name LIKE  'sp_rm_images_".$r[0]['id']."_%'", ARRAY_A);
-			
-
-
-	$content .='
-
-	
-	  <table class="wp-list-table widefat fixed posts" cellspacing="0">
-	<thead>
-	<tr>
-
-
-<th>'.__("Image","sp-rm").'</th>
-<th>'.__("Delete","sp-rm").'</th>
-</tr>
-	</thead><tbody>';	
-	if(count($r_images) > 0){
-	
-	for($i=0; $i<count($r_images); $i++){
-		$content .='<tr class="sp_rm_ai">
-
-
-<td width="160"><img width="150" src="'.$r_images[$i]['option_value'].'"></td>
-<td><a href="admin.php?page=sp-rm-developments&function=manage-listing&id='.$_GET['id'].'&delete-image='.$r_images[$i]['option_id'].'" class="button">'.__("Delete","sp-rm").'</a></td>
-</tr>';
-	}
-	}else{
-	$content .= '<tr class="sp_holder"><td colspan="2"><p style="color:red">No additional Images Added</p></td></tr>';	
-	}
-	
-	
-	$content .='</tbody></table>';
-	
-	
 $content .= sp_rm_show_applications($r[0]['id']);
 }
 	return $content;
@@ -313,7 +247,8 @@ function sp_rm_view_developments(){
 		<td>'.$r[$i]['name'].'</td>
 	
 		<td><a  class="button" href="admin.php?page=sp-rm-developments&function=delete-development&id='.$r[$i]['id'].'">'.__("Delete","sp-rm").'</a>  
-	<a class="button" style="margin-left:20px" href="admin.php?page=sp-rm-developments&function=manage-development&id='.$r[$i]['id'].'">'.__("View","sp-rm").'</a>
+	<a class="button" style="margin-left:20px" href="admin.php?page=sp-rm-developments&function=manage-development&id='.$r[$i]['id'].'">'.__("View","sp-rm").'</a> 
+
 	
 	 </td>
 		</tr>';
@@ -356,7 +291,7 @@ function sp_rm_view_developments(){
 	
 	for($i=0; $i<count($r); $i++){
 		
-			$ree = $wpdb->get_results("SELECT *  FROM ".$wpdb->prefix . "sp_rm_applications where property = '".$r[$i]['id']."'", ARRAY_A);		
+			$ree = $wpdb->get_results("SELECT *  FROM ".$wpdb->prefix . "sp_rm_applications where property = ".$r[$i]['id']."", ARRAY_A);		
 		
 		$content .='<tr>
 		<td>'.$r[$i]['id'].'</td>
@@ -364,7 +299,9 @@ function sp_rm_view_developments(){
 		<td>'.$r[$i]['name'].'</td>
 		<td>'.$r[$i]['address'].'</td>
 		<td><a  class="button" href="admin.php?page=sp-rm-developments&function=delete-listing&id='.$r[$i]['id'].'">'.__("Delete","sp-rm").'</a>  
-	<a class="button" style="margin-left:20px" href="admin.php?page=sp-rm-developments&function=manage-listing&id='.$r[$i]['id'].'">'.__("View","sp-rm").'</a> </td>
+	<a class="button" style="margin-left:20px" href="admin.php?page=sp-rm-developments&function=manage-listing&id='.$r[$i]['id'].'">'.__("View","sp-rm").'</a> 
+		<a class="button" style="margin-left:20px" href="../wp-content/plugins/sp-rental-manager/download.php?function=pdf-all&id='.$r[$i]['id'].'" target="_blank">'.__("Download All Applications","sp-rm").'</a>
+	</td>
 		</tr>';
 		
 				}

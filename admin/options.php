@@ -1,5 +1,5 @@
 <?php
-
+if (!function_exists('SpRmNavigationMenu')) {
 function SpRmNavigationMenu(){
 	
 $menu = '<div style="padding:10px 10px 30px 10px">
@@ -49,11 +49,59 @@ function SpRmOptionsPage(){
 		 $enablessn = '  ';
 	}
 	
-	$content .=''. SpRmNavigationMenu().'<h1>SP Rental manager Options</h1>
+	$content .=''. SpRmNavigationMenu().'<h1>SP Rental manager Options</h1>';
 
+	//premium upgrade
+	if($_POST['upgrade'] != ""){
+	
+	
+	$mydir = ''.ABSPATH.'wp-content/plugins/sp-rental-manager/premium/'; 
+	if (is_dir($mydir)){
+	$d = dir($mydir); 
+	while($entry = $d->read()) { 
+	 if ($entry!= "." && $entry!= "..") { 
+	 @unlink($entry); 
+	 } 
+	} 
+	$d->close(); 
+	@rmdir($mydir); 
+	}
+	function _return_direct() { return 'direct'; }
+add_filter('filesystem_method', '_return_direct');
+WP_Filesystem();
+remove_filter('filesystem_method', '_return_direct');
+	
+	global $wp_filesystem;	
+	echo  unzip_file( $_FILES['premium']['tmp_name'],''.ABSPATH.'wp-content/plugins/sp-rental-manager/' );	
+	echo '<script type="text/javascript">
+<!--
+window.location = "admin.php?page=SpRm&cdm-upgrade=1"
+//-->
+</script>';
+	
+	
+	}
+	
+	$content .='
+<div style="border:1px solid #CCC;padding:5px;margin:5px;background-color:#e3f1d4;">';
 
+if(RM_PREMIUM != 1){
 
-	<form action="admin.php?page=SpRm&save_mmis=1" method="post">
+$content .='<h3>Upgrade to premium!</h3>
+<p>If you would like to see the extra features and upgrade to premium please purchase the addon package by <a href="http://smartypantsplugins.com/sp-rental-manager-plugin/" target="_blank">clicking here</a>. Once purchased you will receive a file, upload that file here and the plugin will do the rest!</p>';
+}else{
+$content .='<h3>Thanks for upgrading!</h3>
+<p>You can patch the premium version with the upload form below once new versions become available!</p>';
+}
+	$content .='
+<form action="admin.php?page=SpRm&" method="post" enctype="multipart/form-data">
+<input type="file" name="premium"> <input type="submit" name="upgrade" value="Install Premium!">
+</form>
+
+</div>';
+//premium upgrade
+
+	$content .='<h2>Settings</h2><form action="admin.php?page=SpRm&save_mmis=1" method="post">
 	 <table class="wp-list-table widefat fixed posts" cellspacing="0">
   
    
@@ -111,5 +159,5 @@ function SpRmOptionsPage(){
 	
 	echo $content;
 }
-
+}
 ?>

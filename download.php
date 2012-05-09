@@ -14,23 +14,33 @@ require( '../../../wp-load.php' );
 switch($function){
 	
 	
+	
+
+	
 	case"pdf":
-	
-		require_once("includes/dompdf/dompdf_config.inc.php");
-	
-	$id = $_GET['id'];
-	$html =SpRmApplicationHTML($id);
-	if($_GET['html'] == 1){
-		
-		echo $html;
-	}else{
-	//$html ='<p>Hello</p>';
-		$dompdf = new DOMPDF();
-		$dompdf->load_html($html);
-		$dompdf->render();
-		$dompdf->stream("export.pdf");
-	}
+		echo '<body onload="window.print()">';
+	$id = esc_sql($_GET['id']);
+$html =SpRmApplicationHTML($id);
+
+
+echo $html;
+echo '</body>';
 	break;
+	case"pdf-all":
+		echo '<body onload="window.print()">';
+	$id = esc_sql($_GET['id']);
+
+$r = $wpdb->get_results("SELECT *  FROM ".$wpdb->prefix . "sp_rm_applications where property = ".$id ."", ARRAY_A);	
+
 	
+
+for($i=0; $i<count($r); $i++){
+$html .='<div style="page-break-after:always;font-size:12px;">';
+$html .=SpRmApplicationHTML($r[$i]['id']);
+$html.='</div>';
+}
+echo $html;
+echo '</body>';
+	break;
 }
 ?>
