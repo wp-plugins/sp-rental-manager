@@ -1,10 +1,27 @@
 <?php
 
+function sp_rm_check_permalinks(){
+	
+	
+	global $wpdb;
 
+	
+	 if ( get_option('permalink_structure') == '' ) { 
+	 
+	 
+	
+	 return '&page_id='.$_GET['page_id'].'';
+	 
+	  } 
+	
+	
+}
 
 function sp_rm_show_available_listings($atts){
 	
 	global $wpdb;
+
+	
 	
 	$content .='<div id="rental_listings">';
 	if($_GET['listing_id'] != ""){
@@ -49,7 +66,7 @@ function sp_rm_show_available_listings($atts){
 	</tr>
 	<tr>
 	<td></td>
-	<td><a class="button" style="margin-left:20px" href="'.get_option('sp_rm_application_link').'?listing_id='.$r[0]['id'].'">'.__("Submit An Application","sp-rm").'</a></td>
+	<td><a class="button" style="margin-left:20px" href="'.get_option('sp_rm_application_link').'?listing_id='.$r[0]['id'].''.sp_rm_check_permalinks().'">'.__("Submit An Application","sp-rm").'</a></td>
 	</tr>
 	
 	
@@ -105,9 +122,9 @@ function sp_rm_show_available_listings($atts){
 		
 		if($r[$i]['photo'] == ""){
 			
-			$img = '<a  href="?listing_id='.$r[$i]['id'].'"><img width="75" src="'.get_bloginfo("wpurl").'/wp-content/plugins/sp-rental-manager/images/no_house.jpg"></a>';
+			$img = '<a  href="?listing_id='.$r[$i]['id'].''.sp_rm_check_permalinks().'"><img width="75" src="'.get_bloginfo("wpurl").'/wp-content/plugins/sp-rental-manager/images/no_house.jpg"></a>';
 		}else{
-		$img = '<a  href="?listing_id='.$r[$i]['id'].'"><img width="75" src="'.$r[$i]['photo'].'"></a>';	
+		$img = '<a  href="?listing_id='.$r[$i]['id'].''.sp_rm_check_permalinks().'"><img width="75" src="'.$r[$i]['photo'].'"></a>';	
 			
 		}
 		$content .='<tr>
@@ -116,8 +133,8 @@ function sp_rm_show_available_listings($atts){
 	<td>'.$r[$i]['price'].'</td>
 	
 		<td>
-	<a class="button" style="margin-left:20px" href="?listing_id='.$r[$i]['id'].'">'.__("View","sp-rm").'</a>
-	<a class="button" style="margin-left:20px" href="'.get_option('sp_rm_application_link').'?listing_id='.$r[$i]['id'].'">'.__("Apply","sp-rm").'</a>
+	<a class="button" style="margin-left:20px" href="?listing_id='.$r[$i]['id'].''.sp_rm_check_permalinks().'">'.__("View","sp-rm").'</a>
+	<a class="button" style="margin-left:20px" href="'.get_option('sp_rm_application_link').'?listing_id='.$r[$i]['id'].''.sp_rm_check_permalinks().'">'.__("Apply","sp-rm").'</a>
 	 </td>
 		</tr>';
 		

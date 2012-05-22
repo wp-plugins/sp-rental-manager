@@ -340,7 +340,7 @@ return false;
 
 });
 </script><div id="rental_listings">
-	<form action="?submit-app=1" method="post" id="abstractForm">	
+	<form action="?submit-app=1'.sp_rm_check_permalinks().'" method="post" id="abstractForm">	
 		<h2>Renter Information</h2>
 		<table width="100%" border="0" cellspacing="3" cellpadding="3">
 '.	$rental.'
