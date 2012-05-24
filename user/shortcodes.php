@@ -129,7 +129,7 @@ function sp_rm_show_available_listings($atts){
 		}
 		$content .='<tr>
 		<td>'.	$img .'</td>
-		<td><a href="?listing_id='.$r[$i]['id'].'">'.$r[$i]['address'].'  '.$r[$i]['unit'].', '.$r[$i]['city'].' '.$r[$i]['state'].'</a></td>
+		<td><a href="?listing_id='.$r[$i]['id'].''.sp_rm_check_permalinks().'">'.$r[$i]['address'].'  '.$r[$i]['unit'].', '.$r[$i]['city'].' '.$r[$i]['state'].'</a></td>
 	<td>'.$r[$i]['price'].'</td>
 	
 		<td>
