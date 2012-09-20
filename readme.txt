@@ -4,7 +4,7 @@ Donate link: http://smartypantsplugins.com/donate/
 Tags: house rentals, apartment rentals, rentals, rent, rental application, application manager, rental plugin
 Requires at least: 2.0.2
 Tested up to: 3.3.2
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 
 A Rentals management plugin for companies that rent houses or apartments.
 
@@ -43,8 +43,8 @@ Premium Features
 * Follow the shortcode instructions.
 
 * Show Rental Listings [sp_rm_show_available_listings]
-* Show Rental Listings for specific development [sp_rm_show_available_listings development="X"]  Where X is the ID of your development
-* Rental Application page: [sp_rm_listing_applications]
+* Show Rental Listings for specific development [rental_listing development="X"]  Where X is the ID of your development
+* Rental Application page: [rental_listing]
 
 == Screenshots ==
 
@@ -62,3 +62,6 @@ Premium Features
 = 1.0.1 = 
 * Initial release bugs fixed.
 * Premium version released
+
+= 1.0.4 = 
+* Seperated the premium version from the main directory of the free plugin. 

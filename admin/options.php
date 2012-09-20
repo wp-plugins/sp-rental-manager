@@ -2,13 +2,51 @@
 if (!function_exists('SpRmNavigationMenu')) {
 function SpRmNavigationMenu(){
 	
-$menu = '<div style="padding:10px 10px 30px 10px">
+	
+if($_GET['sp_rm_hidemessage'] == 1){
+	
+$content .='		
+			<script type="text/javascript">
+				jQuery(document).ready( function() {
+				 sp_cu_dialog("#sp_rm_cdm_ignore",400,200);
+			 
+				});
+			</script>
+
+			<div style="display:none">
+			
+			<div id="sp_rm_cdm_ignore">
+			<h2>It\'s OK!</h2>
+			<p>Hey no hard feelings, we hate nag messages too! If you change your mind and want to give us some love checkout the settings page for a link to the our website!</p>
+			</div>
+		    </div>';	
+			update_option("sp_rm_cdm_ignore",1);
+}
+
+if($_GET['sp_rm_hidemessage'] == '2'){
+	
+update_option("sp_rm_cdm_ignore",0);	
+}
+if(RM_PREMIUM != 1 && get_option("sp_rm_cdm_ignore") != 1){
+	
+	$content .='	
+	<div style="border:1px solid #CCC;padding:5px;margin:5px;background-color:#eaf0ea; border-radius:10px">
+	<p><strong>Upgrade to the premium version today to get enhanced features and support. Features include: Multiple photos for listings,export all users of a property,google maps integration!</strong> <br />
+<br />
+<a href="http://smartypantsplugins.com/sp-rental-manager-plugin/" target="_blank" class="button">Click here to upgrade! </a>  <a style="margin-left:10px" href="http://smartypantsplugins.com/donate/" target="_blank" class="button">Click here to donate</a> <a href="admin.php?page=SpRm&sp_rm_hidemessage=1"  class="button" style="margin-left:10px">Click here to ignore us!</a></p>
+	</div>';
+
+}
+
+	
+	
+$content .='	<div style="padding:10px 10px 30px 10px">
   <a class="button" href="admin.php?page=SpRm">'.__("Edit Options","sp-rm").'</a>
 <a class="button" href="admin.php?page=sp-rm-applications">'.__("Applications","sp-rm").'</a>
 <a class="button" href="admin.php?page=sp-rm-developments">'.__("Listing","sp-rm").'</a>
   </div> ';	
 	
-	return $menu;
+	return $content;
 }
 function SpRmOptionsPage(){
 	
@@ -49,59 +87,28 @@ function SpRmOptionsPage(){
 		 $enablessn = '  ';
 	}
 	
-	$content .=''. SpRmNavigationMenu().'<h1>SP Rental manager Options</h1>';
+	$content .='<h1>Options Page</h1>'. SpRmNavigationMenu().'';
 
-	//premium upgrade
-	if($_POST['upgrade'] != ""){
 	
 	
-	$mydir = ''.ABSPATH.'wp-content/plugins/sp-rental-manager/premium/'; 
-	if (is_dir($mydir)){
-	$d = dir($mydir); 
-	while($entry = $d->read()) { 
-	 if ($entry!= "." && $entry!= "..") { 
-	 @unlink($entry); 
-	 } 
-	} 
-	$d->close(); 
-	@rmdir($mydir); 
-	}
-	function _return_direct() { return 'direct'; }
-add_filter('filesystem_method', '_return_direct');
-WP_Filesystem();
-remove_filter('filesystem_method', '_return_direct');
-	
-	global $wp_filesystem;	
-	echo  unzip_file( $_FILES['premium']['tmp_name'],''.ABSPATH.'wp-content/plugins/sp-rental-manager/' );	
-	echo '<script type="text/javascript">
-<!--
-window.location = "admin.php?page=SpRm&cdm-upgrade=1"
-//-->
-</script>';
-	
-	
-	}
-	
-	$content .='
-<div style="border:1px solid #CCC;padding:5px;margin:5px;background-color:#e3f1d4;">';
 
-if(RM_PREMIUM != 1){
 
-$content .='<h3>Upgrade to premium!</h3>
-<p>If you would like to see the extra features and upgrade to premium please purchase the addon package by <a href="http://smartypantsplugins.com/sp-rental-manager-plugin/" target="_blank">clicking here</a>. Once purchased you will receive a file, upload that file here and the plugin will do the rest!</p>';
-}else{
-$content .='<h3>Thanks for upgrading!</h3>
-<p>You can patch the premium version with the upload form below once new versions become available!</p>';
+	$content .='<h2>Settings</h2>
+	';
+	if(RM_PREMIUM != 1 && get_option("sp_rm_cdm_ignore") == 1){
+	
+	$content .='	
+	<div style="border:1px solid #CCC;padding:5px;margin:5px;background-color:#eaf0ea; border-radius:10px">
+	<p><strong>Upgrade to the premium version today to get enhanced features and support. Features include: Multiple photos for listings,export all users of a property,google maps integration!</strong> <br />
+<br />
+<a href="http://smartypantsplugins.com/sp-rental-manager-plugin/" target="_blank" class="button">Click here to upgrade! </a>  <a style="margin-left:10px" href="http://smartypantsplugins.com/donate/" target="_blank" class="button">Click here to donate</a> </p>
+	</div>';
+
 }
+
 	$content .='
-<form action="admin.php?page=SpRm&" method="post" enctype="multipart/form-data">
-<input type="file" name="premium"> <input type="submit" name="upgrade" value="Install Premium!">
-</form>
-
-</div>';
-//premium upgrade
-
-	$content .='<h2>Settings</h2><form action="admin.php?page=SpRm&save_mmis=1" method="post">
+	
+	<form action="admin.php?page=SpRm&save_mmis=1" method="post">
 	 <table class="wp-list-table widefat fixed posts" cellspacing="0">
   
    

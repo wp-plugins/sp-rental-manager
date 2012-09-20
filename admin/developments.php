@@ -194,7 +194,7 @@ function sp_rm_view_developments(){
 	
 	
 	global $wpdb;
-	$content .= ' '. SpRmNavigationMenu().'	<h1>'.__("Developments","sp-rm").'</h1>';
+	$content .= '	<h1>'.__("Developments","sp-rm").'</h1> '. SpRmNavigationMenu().'';
 				
 			if($_GET['function'] == 'manage-development'){		
 			

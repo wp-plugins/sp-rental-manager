@@ -10,7 +10,7 @@ function sp_rm_show_applications($id = NULL){
 		
 			if($id == NULL){
 			$r = $wpdb->get_results("SELECT *  FROM ".$wpdb->prefix . "sp_rm_applications order by date", ARRAY_A);	
-			$content .=''. SpRmNavigationMenu().'	<h1>'.__("Applications List","sp-rm").'</h1> ';
+			$content .='<h1>'.__("Applications List","sp-rm").'</h1>'. SpRmNavigationMenu().'	 ';
 			}else{
 				
 			$r = $wpdb->get_results("SELECT *  FROM ".$wpdb->prefix . "sp_rm_applications where property = $id", ARRAY_A);
