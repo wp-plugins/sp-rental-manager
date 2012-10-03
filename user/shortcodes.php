@@ -63,7 +63,37 @@ function sp_rm_show_available_listings($atts){
 	<tr>
 	<td>'.__("Price","sp-rm").':</td>
 	<td>'.$r[0]['price'].'</td>
-	</tr>
+	</tr>';
+	
+	if($r[0]['description'] != ""){
+	$content .='<tr>
+	<td>'.__("Description","sp-rm").':</td>
+	<td>'.stripslashes($r[0]['description']).'</td>
+	</tr>';	
+		
+	}
+	$features = unserialize($r[0]['features']);
+	$features_values = unserialize($r[0]['features_values']);
+
+	$i= 0;
+	if($features[0] != ""){
+		
+		$content .='<tr>
+	<td>'.__("Description","sp-rm").':</td>
+	<td><table>';	
+		
+	
+	foreach( $features as $key => $value){
+	
+		
+		$content .='<tr><td style="width:150px"><strong>'.stripslashes($features[$i]).':</strong> </td><td>'.stripslashes($features_values[$i]).'</td></tr>';
+			$i++;
+	}
+	$content .='</table></td></tr>';
+	}
+	
+	
+	$content .='
 	<tr>
 	<td></td>
 	<td><a class="button" style="margin-left:20px" href="'.get_option('sp_rm_application_link').'?listing_id='.$r[0]['id'].''.sp_rm_check_permalinks().'">'.__("Submit An Application","sp-rm").'</a></td>

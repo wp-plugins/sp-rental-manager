@@ -1,4 +1,17 @@
 <?php
+add_action('admin_init', 'sp_rm_editor_admin_init');
+add_action('admin_head', 'sp_rm_editor_admin_head');
+ 
+function sp_rm_editor_admin_init() {
+  wp_enqueue_script('word-count');
+  wp_enqueue_script('post');
+  wp_enqueue_script('editor');
+  wp_enqueue_script('media-upload');
+}
+ 
+function sp_rm_editor_admin_head() {
+  wp_tiny_mce();
+}
 
 
 function sp_rm_manage_developments(){
@@ -76,7 +89,10 @@ if($_POST['save'] != ""){
 		$insert['price'] = $_POST['price'];
 		$insert['photo'] = $_POST['photo'];
 		$insert['did'] = $_POST['did'];
-	
+		$insert['description'] = $_POST['description'];
+		
+		$insert['features'] = serialize(array_filter($_POST['features']));
+		$insert['features_values'] = serialize(array_filter($_POST['features_value']));
 		
 		if($_POST['id'] != ""){
 		$where['id'] =$_POST['id'] ;
@@ -102,7 +118,17 @@ if($_GET['id'] != ""){
 
 $devs = $wpdb->get_results("SELECT *  FROM  ".$wpdb->prefix . "sp_rm_developments order by name", ARRAY_A);	
 
-$content .= ''. $portfolio_list_dev .'
+if($r[0]['id'] != "" && $_GET['pics'] == 1){
+	if(RM_PREMIUM == 1){
+		echo '<div style="padding:10px;"><a href="admin.php?page=sp-rm-developments&function=manage-listing&id='.$_GET['id'].'" class="button">&laquo; Back to listing</a></div>';
+	echo sp_rm_admin_multiple_images($r[0]['id']);
+	}
+echo  sp_rm_show_applications($r[0]['id']);
+}else{
+if(RM_PREMIUM == 1){
+echo '<div style="padding:10px;"><a href="admin.php?page=sp-rm-developments&function=manage-listing&id='.$_GET['id'].'&pics=1" class="button">Add more images</a></div>';
+}
+echo  ''. $portfolio_list_dev .'
 <script type="text/javascript">
 	jQuery(function() {
 	
@@ -118,7 +144,7 @@ $content .= ''. $portfolio_list_dev .'
 	
 	<tbody>
 	<tr>
-	<td>'.__("Name","sp-rm").':</td>
+	<td style="width:150px">'.__("Name","sp-rm").':</td>
 	<td><input type="text" name="dev-name" value="'.$r[0]['name'].'"></td>
 	</tr>
 		<tr>
@@ -129,10 +155,10 @@ $content .= ''. $portfolio_list_dev .'
 	';
 	
 	for($i=0; $i<count($devs); $i++){
-		$content .= '<option value="'.$devs[$i]['id'].'">'.$devs[$i]['name'].'</option>';
+		echo  '<option value="'.$devs[$i]['id'].'">'.$devs[$i]['name'].'</option>';
 	}
 	
-	$content .='</select></td>
+	echo '</select></td>
 	</tr>
 	
 	<tr>
@@ -157,17 +183,42 @@ $content .= ''. $portfolio_list_dev .'
 	<input type="hidden" id="photo" name="photo" value="'.$r[0]['photo'].'">
 	<input id="featured_upload" class="button" value="Upload" /><br>';
 	if($r[0]['photo'] != ""){
-		$content .= '<img src="'.$r[0]['photo'].'" width="150" class="imgsrc">';
+		echo  '<img src="'.$r[0]['photo'].'" width="150" class="imgsrc">';
 	}else{
-		$content .='<img src="" class="imgsrc">';
+		echo '<img src="" class="imgsrc">';
 	}
 	
-	$content .='
+	echo '
 	
 </td>
-
+<tr>
+		<td>'.__("Description","sp-rm").':</td>
+	<td>'.the_editor(stripslashes($r[0]['description']), "description", "", false).'</td>
+	</tr>
+	
+	<tr>
+		<td>'.__("Features","sp-rm").':</td>
+	<td>';
+	
+	$features = unserialize($r[0]['features']);
+	$features_values = unserialize($r[0]['features_values']);
+	
+	
+	echo '<div id="sp_rm_feature_main" class="sp_rm_feature">Feature Name <input type="text" name="features[]" value="'.stripslashes($features[0]).'"> Feature Value <input type="text" name="features_value[]" value="'.stripslashes($features_values[0]).'"> <a href="javascript:sp_rm_add_feature();"><img src="../wp-content/plugins/sp-rental-manager/images/add.png"></a></div>';
+	$i= 1;
+	if($features[0] != ""){
+	foreach( $features as $key => $value){
+	
+		
+		echo '<div id="sp_rm_feature_main" class="sp_rm_feature">Feature Name <input type="text" name="features[]" value="'.stripslashes($features[$i]).'"> Feature Value <input type="text" name="features_value[]" value="'.stripslashes($features_values[$i]).'"></div>';
+			$i++;
+	}
+	}
+	echo '<div id="sp_rm_feature_end"></div>
+	</td>
+	</tr>
   <tr>
-		<tr>
+  
 	<td></td>
 	<td><input type="submit" name="save" value="'.__("Save","sp-rm").'"></td>
 	</tr>
@@ -179,11 +230,6 @@ $content .= ''. $portfolio_list_dev .'
 
 ';	
 
-if($r[0]['id'] != ""){
-	if(RM_PREMIUM == 1){
-	$content .=sp_rm_admin_multiple_images($r[0]['id']);
-	}
-$content .= sp_rm_show_applications($r[0]['id']);
 }
 	return $content;
 }

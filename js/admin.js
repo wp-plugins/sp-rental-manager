@@ -1,6 +1,9 @@
 	
 	
-	
+	function sp_rm_add_feature(){
+		
+		jQuery('#sp_rm_feature_end').before('<div id="sp_rm_feature_main" class="sp_rm_feature">Feature Name <input type="text" name="features[]" value=""> Feature Value <input type="text" name="features_value[]" value=""></div>');
+	}
 	
 	function wp_makeFileUpload(uploaddiv,sendto){
 	
@@ -12,6 +15,7 @@
 			tb_show('', 'media-upload.php?type=image&amp;TB_iframe=true&height=550&width=700');
  			return false;
 		});
+		
 		
 		window.send_to_editor = function(html) {
  			//imgurl = jQuery('img',html).attr('src');
