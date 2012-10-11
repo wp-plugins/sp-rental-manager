@@ -79,7 +79,7 @@ function sp_rm_show_available_listings($atts){
 	if($features[0] != ""){
 		
 		$content .='<tr>
-	<td>'.__("Description","sp-rm").':</td>
+	<td>'.__("Features","sp-rm").':</td>
 	<td><table>';	
 		
 	

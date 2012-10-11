@@ -4,7 +4,7 @@ Plugin Name: SP Rental Manager
 Plugin URI: http://www.smartypantsplugins.com
 Description: A wordpress plugin to manage rental properties
 Author: SmartyPants
-Version: 1.0.5
+Version: 1.0.6
 Author URI: http://www.smartypantsplugins.com
 */
 
@@ -24,7 +24,7 @@ include 'user/shortcodes.php';
 add_action('admin_menu', 'sp_rm_menu');
 
 global $sp_rm_version;
-$sp_rm_version = "1.0.5";
+$sp_rm_version = "1.0.6";
 define('SALT', '08934587973238746238746237'); 
 
 
@@ -86,10 +86,7 @@ CREATE TABLE ".$wpdb->prefix . "sp_rm_rentals (
 ";
 
 
- 
- $updatesql = $wpdb->query("ALTER TABLE `".$wpdb->prefix."sp_rm_rentals` 
- 							ADD `features` TEXT NOT NULL ,
-							ADD `features_values` TEXT NOT NULL ");
+
 
    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
    dbDelta($sql);
@@ -97,7 +94,20 @@ CREATE TABLE ".$wpdb->prefix . "sp_rm_rentals (
    add_option("sp_rm_version", $sp_rm_version );
 }
 
-
+function sp_rm_listings_update(){
+	
+	 global $wpdb;
+	    global $sp_rm_listings ;
+		global $sp_rm_version ;
+		
+ $updatesql = $wpdb->query("ALTER TABLE `".$wpdb->prefix."sp_rm_rentals` 
+ 							ADD `features` TEXT NOT NULL ,
+							ADD `features_values` TEXT NOT NULL ");
+							
+				  add_option("sp_rm_version", $sp_rm_version );			
+	
+}
+add_action('plugins_loaded', 'sp_rm_listings_update');
 register_activation_hook(__FILE__,'sp_rm_listings_install');
 
 
@@ -142,6 +152,9 @@ function sp_rm_menu() {
 	 
 
 }
-
+ 
+ $updatesql = $wpdb->query("ALTER TABLE `".$wpdb->prefix."sp_rm_rentals` 
+ 							ADD `features` TEXT NOT NULL ,
+							ADD `features_values` TEXT NOT NULL ");
  
 ?>
