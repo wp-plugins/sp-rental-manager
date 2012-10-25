@@ -40,6 +40,20 @@ if(RM_PREMIUM != 1 && get_option("sp_rm_cdm_ignore") != 1){
 
 	
 	
+if ( !class_exists( 'Theme_My_Login' ) ){
+$content .='<div style="padding:5px;margin:5px;background-color:pink;color:red;font-weight:bold">This plugin requires theme my login and registered users to be enabled to work properly. <a href="http://wordpress.org/extend/plugins/theme-my-login/">Click here to download</a></div>';
+}
+	
+	if ( get_option('sp_rm_application_link') == '' ){
+$content .='<div style="padding:5px;margin:5px;background-color:pink;color:red;font-weight:bold">Your application page is missing, please add a page with the shortcode [sp_rm_listing_applications] and <a href="admin.php?page=SpRm">click here to update the url.</a></div>';
+}
+		if ( get_option('sp_rm_application_ty') == '' ){
+$content .='<div style="padding:5px;margin:5px;background-color:pink;color:red;font-weight:bold">Your thank you page is missing! <a href="admin.php?page=SpRm">click here to update the url.</a></div>';
+}
+	
+		
+	
+	
 $content .='	<div style="padding:10px 10px 30px 10px">
   <a class="button" href="admin.php?page=SpRm">'.__("Edit Options","sp-rm").'</a>
 <a class="button" href="admin.php?page=sp-rm-applications">'.__("Applications","sp-rm").'</a>

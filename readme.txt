@@ -4,7 +4,7 @@ Donate link: http://smartypantsplugins.com/donate/
 Tags: house rentals, apartment rentals, rentals, rent, rental application, application manager, rental plugin
 Requires at least: 2.0.2
 Tested up to: 3.3.2
-Stable tag: 1.0.7
+Stable tag: 1.0.8
 
 A Rentals management plugin for companies that rent houses or apartments.
 
@@ -70,3 +70,8 @@ Premium Features
 * Added description field
 * Added features to edit mode
 * Fixed bug with Premium
+
+= 1.0.8 =
+* Fixed application link
+* Fixed error with images
+* Added some notices incase you have configured it wrong.

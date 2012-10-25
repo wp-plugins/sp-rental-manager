@@ -67,7 +67,7 @@ $content .= ''. $portfolio_list_dev .'
 
 
 ';	
-	return $content;
+echo $content;
 }
 
 
@@ -240,15 +240,15 @@ function sp_rm_view_developments(){
 	
 	
 	global $wpdb;
-	$content .= '	<h1>'.__("Developments","sp-rm").'</h1> '. SpRmNavigationMenu().'';
+	echo  '	<h1>'.__("Developments","sp-rm").'</h1> '. SpRmNavigationMenu().'';
 				
 			if($_GET['function'] == 'manage-development'){		
 			
-			$content .= sp_rm_manage_developments();	
+			echo  sp_rm_manage_developments();	
 			
 			}elseif($_GET['function'] == 'manage-listing'){		
 			
-			$content .= sp_rm_manage_listing();			
+			echo  sp_rm_manage_listing();			
 			
 			}elseif($_GET['function'] == 'delete-development'){
 				
@@ -272,7 +272,7 @@ function sp_rm_view_developments(){
 			
 			
 			
-				$content .='
+				echo '
 
 	 <a class="button" href="admin.php?page=sp-rm-developments&function=manage-development">'.__("Add Development","sp-rm").'</a>
 	  <table class="wp-list-table widefat fixed posts" cellspacing="0">
@@ -288,7 +288,7 @@ function sp_rm_view_developments(){
 	
 	for($i=0; $i<count($r); $i++){
 		
-		$content .='<tr>
+		echo '<tr>
 		<td>'.$r[$i]['id'].'</td>
 		<td>'.$r[$i]['name'].'</td>
 	
@@ -301,7 +301,7 @@ function sp_rm_view_developments(){
 		
 				}
 				
-				$content .= '</tbody></table>
+				echo  '</tbody></table>
 				
 				<h1>'.__("Listings","sp-rm").'</h1>
 				
@@ -319,7 +319,7 @@ function sp_rm_view_developments(){
 			
 			
 			
-				$content .='
+				echo '
 
 	 <a class="button" href="admin.php?page=sp-rm-developments&function=manage-listing">'.__("Add Listing","sp-rm").'</a>
 	  <table class="wp-list-table widefat fixed posts" cellspacing="0">
@@ -339,7 +339,7 @@ function sp_rm_view_developments(){
 		
 			$ree = $wpdb->get_results("SELECT *  FROM ".$wpdb->prefix . "sp_rm_applications where property = ".$r[$i]['id']."", ARRAY_A);		
 		
-		$content .='<tr>
+		echo '<tr>
 		<td>'.$r[$i]['id'].'</td>
 		<td>'.count($ree).'</td>
 		<td>'.$r[$i]['name'].'</td>
@@ -352,7 +352,7 @@ function sp_rm_view_developments(){
 		
 				}
 				
-				$content .= '</tbody></table>';
+				echo  '</tbody></table>';
 				
 	
 	
