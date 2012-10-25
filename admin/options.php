@@ -76,6 +76,12 @@ function SpRmOptionsPage(){
 		update_option( 'sp_rm_application_ty',esc_html($_POST['sp_rm_application_ty']) ); 
 		update_option( 'sp_rm_application_emails',esc_html($_POST['sp_rm_application_emails']) ); 
 		
+		update_option( 'sp_rm_list_thumb_size_w',esc_html($_POST['sp_rm_list_thumb_size_w']) ); 
+		update_option( 'sp_rm_list_thumb_size_h',esc_html($_POST['sp_rm_list_thumb_size_h']) ); 
+		update_option( 'sp_rm_thumb_size_w',esc_html($_POST['sp_rm_thumb_size_w']) ); 
+		update_option( 'sp_rm_thumb_size_h',esc_html($_POST['sp_rm_thumb_size_h']) ); 
+		
+		
 		
 		  if(RM_PREMIUM == 1){
 			  update_option( 'sp_rm_gmap_api',esc_html($_POST['sp_rm_gmap_api']) ); 
@@ -124,6 +130,16 @@ function SpRmOptionsPage(){
 	
 	<form action="admin.php?page=SpRm&save_mmis=1" method="post">
 	 <table class="wp-list-table widefat fixed posts" cellspacing="0">
+       <tr>
+    <td width="300"><strong>'.__("List view image","sp-rm").'</strong><br><em>'.__("Size of the thumbnail for the listing of all available apartments.","sp-rm").'</td>
+    <td>Width:<input type="text" name="sp_rm_thumb_size_w"  value="'.get_option('sp_rm_thumb_size_w').'"  size=15"> Height:<input type="text" name="sp_rm_thumb_size_h"  value="'.get_option('sp_rm_thumb_size_h').'"  size=15"> </td>
+  </tr>
+    
+          <tr>
+    <td width="300"><strong>'.__("Listing Page image","sp-rm").'</strong><br><em>'.__("Size of the image for the actual listing page.","sp-rm").'</td>
+    <td>Width:<input type="text" name="sp_rm_list_thumb_size_w"  value="'.get_option('sp_rm_list_thumb_size_w').'"  size=15"> Height:<input type="text" name="sp_rm_list_thumb_size_h"  value="'.get_option('sp_rm_list_thumb_size_h').'"  size=15"> </td>
+  </tr>
+    
   
    
          <tr>
@@ -138,6 +154,7 @@ function SpRmOptionsPage(){
     <td width="300"><strong>'.__("Emails","sp-rm").'</strong><br><em>'.__("This is where you want the submitted application to go, comma seperate for multiple emails.","sp-rm").'</em></td>
     <td><input type="text" name="sp_rm_application_emails"  value="'.get_option('sp_rm_application_emails').'"  size=80"> </td>
   </tr>
+  
      <tr>
     <td width="300"><strong>'.__("Enable SSN?","sp-rm").'</strong><br><em>'.__("Would you like to take the users social security number? Please only use this features if you are using an SSL Certificate as you are responsibile for your own data. The SSN is encrypted into the database using  advanced binary encryption methods.","sp-rm").'</em></td>
     <td><input type="checkbox" name="dlgrl_enable_ssn"   value="1" '. $enablessn.'> </td>

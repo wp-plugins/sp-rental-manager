@@ -94,6 +94,15 @@ if($_POST['save'] != ""){
 		$insert['features'] = serialize(array_filter($_POST['features']));
 		$insert['features_values'] = serialize(array_filter($_POST['features_value']));
 		
+		if($_FILES['photo']['name'] != ""){			
+     	$photo = wp_upload_bits($_FILES['photo']["name"], null, file_get_contents($_FILES['photo']["tmp_name"]));	
+
+		$insert['photo'] = 	$photo['url'];	
+	
+		}		
+		
+		
+		
 		if($_POST['id'] != ""){
 		$where['id'] =$_POST['id'] ;
 	    $wpdb->update(  "".$wpdb->prefix . "sp_rm_rentals", $insert , $where );	
@@ -128,17 +137,13 @@ echo  sp_rm_show_applications($r[0]['id']);
 if(RM_PREMIUM == 1){
 echo '<div style="padding:10px;"><a href="admin.php?page=sp-rm-developments&function=manage-listing&id='.$_GET['id'].'&pics=1" class="button">Add more images</a></div>';
 }
+
+
 echo  ''. $portfolio_list_dev .'
-<script type="text/javascript">
-	jQuery(function() {
-	
-	
-	wp_makeFileUpload("#featured_upload","#photo");
-		
-	});
-		
-		</script>
-<form action="admin.php?page=sp-rm-developments&function=manage-listing" method="post">
+
+
+
+<form action="admin.php?page=sp-rm-developments&function=manage-listing" method="post" enctype="multipart/form-data">
 <input type="hidden" name="id" value="'.$r[0]['id'].'">
   <table class="wp-list-table widefat fixed posts" cellspacing="0">
 	
@@ -180,10 +185,10 @@ echo  ''. $portfolio_list_dev .'
 	    <tr>
 	<td>'.__("Featured Image","sp-rm").'</td>
 	<td>
-	<input type="hidden" id="photo" name="photo" value="'.$r[0]['photo'].'">
-	<input id="featured_upload" class="button" value="Upload" /><br>';
+
+	<input type="file" id=photo" name="photo" /><br>';
 	if($r[0]['photo'] != ""){
-		echo  '<img src="'.$r[0]['photo'].'" width="150" class="imgsrc">';
+		echo  '<img src="'.content_url().'/plugins/sp-rental-manager/thumbs.php?src='.$r[0]['photo'].'&w=200&h=150" width="150" class="imgsrc">';
 	}else{
 		echo '<img src="" class="imgsrc">';
 	}
