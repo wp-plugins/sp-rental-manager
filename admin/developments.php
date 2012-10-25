@@ -87,7 +87,7 @@ if($_POST['save'] != ""){
 		$insert['state'] = $_POST['state'];
 		$insert['city'] = $_POST['city'];
 		$insert['price'] = $_POST['price'];
-		$insert['photo'] = $_POST['photo'];
+		
 		$insert['did'] = $_POST['did'];
 		$insert['description'] = $_POST['description'];
 		
@@ -132,7 +132,7 @@ if($r[0]['id'] != "" && $_GET['pics'] == 1){
 		echo '<div style="padding:10px;"><a href="admin.php?page=sp-rm-developments&function=manage-listing&id='.$_GET['id'].'" class="button">&laquo; Back to listing</a></div>';
 	echo sp_rm_admin_multiple_images($r[0]['id']);
 	}
-echo  sp_rm_show_applications($r[0]['id']);
+
 }else{
 if(RM_PREMIUM == 1){
 echo '<div style="padding:10px;"><a href="admin.php?page=sp-rm-developments&function=manage-listing&id='.$_GET['id'].'&pics=1" class="button">Add more images</a></div>';
@@ -234,6 +234,13 @@ echo  ''. $portfolio_list_dev .'
 
 
 ';	
+
+if($_GET['id'] != ""){
+	
+	
+	echo  sp_rm_show_applications($r[0]['id']);
+	
+}
 
 }
 	return $content;

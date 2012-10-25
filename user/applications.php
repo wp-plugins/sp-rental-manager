@@ -19,7 +19,7 @@ global $wpdb;
 
 
 $r = $wpdb->get_results("SELECT *  FROM ".$wpdb->prefix . "sp_rm_applications where id = '".$id."'", ARRAY_A);		
-	
+	$rental = $wpdb->get_results("SELECT *  FROM ".$wpdb->prefix . "sp_rm_rentals where id = '".$r[0]['property']."'", ARRAY_A);		
 	
 	$address1 = unserialize($r[0]['address1']);
 	$address2 = unserialize($r[0]['address2']);
@@ -37,7 +37,7 @@ $r = $wpdb->get_results("SELECT *  FROM ".$wpdb->prefix . "sp_rm_applications wh
   <table class="wp-list-table widefat fixed posts" cellpadding="4" cellspacing="0" width="80%" border="1" bordercolor="#CCC" >
   <tr>
     <td><strong>Property Interested In:</strong></td>
-    <td colspan="3">'.stripslashes($r[0]['property']).'</td>
+    <td colspan="3">'.$rental[0]['address'].' #'.$rental[0]['unit'].', '.$rental[0]['city'].' '.$rental[0]['state'].'</td>
  
  </tr>
   <tr>
@@ -564,7 +564,7 @@ global $wpdb,$current_user;
 
 
 
-  if ( !is_user_logged_in() ) { 
+  if ( !is_user_logged_in() && get_option('sp_rm_require_reg')  == 1 ) { 
  
 sp_rm_redirect('/login/?redirect_to='.urlencode($_SERVER['REQUEST_URI']).'&reauth=1');
 exit;

@@ -78,7 +78,7 @@ function sp_rm_view_application(){
 	
 	
 	$r = $wpdb->get_results("SELECT *  FROM ".$wpdb->prefix . "sp_rm_applications where id = '".$wpdb->escape($_GET['id'])."'", ARRAY_A);		
-	
+	$rental = $wpdb->get_results("SELECT *  FROM ".$wpdb->prefix . "sp_rm_rentals where id = '".$r[0]['property']."'", ARRAY_A);		
 	
 	$address1 = unserialize($r[0]['address1']);
 	$address2 = unserialize($r[0]['address2']);
@@ -97,7 +97,7 @@ function sp_rm_view_application(){
   <table class="wp-list-table widefat fixed posts" cellspacing="0">
   <tr>
     <td><strong>Property Interested In:</strong></td>
-    <td colspan="3">'.stripslashes($r[0]['property']).'</td>
+    <td colspan="3">'.$rental[0]['address'].' #'.$rental[0]['unit'].', '.$rental[0]['city'].' '.$rental[0]['state'].'</td>
  
  </tr>
   <tr>

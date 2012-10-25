@@ -40,7 +40,7 @@ if(RM_PREMIUM != 1 && get_option("sp_rm_cdm_ignore") != 1){
 
 	
 	
-if ( !class_exists( 'Theme_My_Login' ) ){
+if ( !class_exists( 'Theme_My_Login' ) && get_option('sp_rm_require_reg')  == 1 ){
 $content .='<div style="padding:5px;margin:5px;background-color:pink;color:red;font-weight:bold">This plugin requires theme my login and registered users to be enabled to work properly. <a href="http://wordpress.org/extend/plugins/theme-my-login/">Click here to download</a></div>';
 }
 	
@@ -90,22 +90,20 @@ function SpRmOptionsPage(){
 				 update_option( 'sp_rm_gmap_zoom',esc_html($_POST['sp_rm_gmap_zoom']) ); 
 			
 		  }
-				if($_POST['dlgrl_enable_ssn'] == "1"){					
-					update_option('dlgrl_enable_ssn','1' ); 
-				}else{
-					update_option('dlgrl_enable_ssn','0' ); 
-				}
+				if($_POST['dlgrl_enable_ssn'] == "1"){	update_option('dlgrl_enable_ssn','1' ); 				}else{					update_option('dlgrl_enable_ssn','0' ); 				}
+				if($_POST['sp_rm_require_reg'] == "1"){	update_option('sp_rm_require_reg','1' ); 				}else{					update_option('sp_rm_require_reg','0' ); 				}	
+				
+				
 			
 			
 	}
 	
 	
 	
-	if(get_option('dlgrl_enable_ssn') == 1){
-	 $enablessn = ' checked="checked" ';	
-	}else{
-		 $enablessn = '  ';
-	}
+	if(get_option('dlgrl_enable_ssn') == 1){	 $enablessn = ' checked="checked" ';	}else{		 $enablessn = '  ';}
+	if(get_option('sp_rm_require_reg') == 1){	 $sp_rm_require_reg = ' checked="checked" ';	}else{		 $sp_rm_require_reg = '  ';}
+	
+	
 	
 	$content .='<h1>Options Page</h1>'. SpRmNavigationMenu().'';
 
@@ -154,6 +152,12 @@ function SpRmOptionsPage(){
     <td width="300"><strong>'.__("Emails","sp-rm").'</strong><br><em>'.__("This is where you want the submitted application to go, comma seperate for multiple emails.","sp-rm").'</em></td>
     <td><input type="text" name="sp_rm_application_emails"  value="'.get_option('sp_rm_application_emails').'"  size=80"> </td>
   </tr>
+  
+    <tr>
+    <td width="300"><strong>'.__("Require Registration?","sp-rm").'</strong><br><em>'.__("Requiring registration is a good tool for marketing and keeping track of people who are submitting applications. This may open for more opportunity in development down the road.","sp-rm").'</em></td>
+    <td><input type="checkbox" name="sp_rm_require_reg"   value="1" '. $sp_rm_require_reg.'> </td>
+  </tr>
+  
   
      <tr>
     <td width="300"><strong>'.__("Enable SSN?","sp-rm").'</strong><br><em>'.__("Would you like to take the users social security number? Please only use this features if you are using an SSL Certificate as you are responsibile for your own data. The SSN is encrypted into the database using  advanced binary encryption methods.","sp-rm").'</em></td>
