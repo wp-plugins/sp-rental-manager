@@ -16,7 +16,22 @@ function sp_rm_check_permalinks(){
 	
 	
 }
-
+function sp_rm_listing_title($id){
+	
+	global $wpdb, $post_data;
+	 
+	
+	  if ($_GET['listing_id'] != "") {
+          $r = $wpdb->get_results("SELECT *  FROM ".$wpdb->prefix . "sp_rm_rentals where id = '".$wpdb->escape($_GET['listing_id'])."'", ARRAY_A);	
+	
+	return ''.$r[0]['address'].' #'.$r[0]['unit'].', '.$r[0]['city'].' '.$r[0]['state'].'';
+        } else {
+            return $post_data['the_title'];
+        }
+	
+	
+	
+}
 function sp_rm_show_available_listings($atts){
 	
 	global $wpdb;
@@ -30,8 +45,17 @@ function sp_rm_show_available_listings($atts){
 	$r = $wpdb->get_results("SELECT *  FROM ".$wpdb->prefix . "sp_rm_rentals where id = '".$wpdb->escape($_GET['listing_id'])."'", ARRAY_A);			
 	
 	
-	$content .='<div class="rm_listing_main_img">';
+	$content .='
+	<div class="sp_rp_bread">
+	<span><a href="?listing_id=">Back to Listings</a></span> &raquo; <span>'.$r[0]['address'].' #'.$r[0]['unit'].' '.$r[0]['city'].' '.$r[0]['state'].'</span>
+	</div>
+	<div class="rm_listing_main_img">
+	
+	
+	
+	';
 		if($r[0]['photo'] == ""){
+	
 			
 			$img = '<img src="'.get_bloginfo("wpurl").'/wp-content/plugins/sp-rental-manager/images/no_house.jpg">';
 			
@@ -40,34 +64,33 @@ function sp_rm_show_available_listings($atts){
 			if(RM_PREMIUM == 1){
 			$content .=sp_rm_display_additiona_images($r[0]['photo'],$r[0]['id']);	
 			}else{
-		$img = '<img src="'.content_url().'/plugins/sp-rental-manager/thumbs.php?src='.$r[0]['photo'].'&w='.get_option('sp_rm_list_thumb_size_w').'&h='.get_option('sp_rm_list_thumb_size_h').'&zc=3" >';	
+		$img = '<div id="sp_rm_gallery">
+	
+		<div id="sp_rm_gallery_main" >
+		<img src="'.content_url().'/plugins/sp-rental-manager/thumbs.php?src='.$r[0]['photo'].'&w='.get_option('sp_rm_list_thumb_size_w').'&h='.get_option('sp_rm_list_thumb_size_h').'&zc=3" >
+		</div>
+		</div>';	
 			}
 		}
 	
 				$content .='</div>
-<p>'.$r[0]['address'].' #'.$r[0]['unit'].', '.$r[0]['city'].' '.$r[0]['state'].'</p>
+
 	'.$img .'
+	<div class="sp_rp_bread">Details and Features</div>
 	  <table class="wp-list-table widefat fixed posts" cellspacing="0">
 	<thead>
-	<tr>
 
-<th colspan="2" >'.__("Listing","sp-rm").' #'.$r[0]['id'].'</th>
-
-</tr>
 	</thead><tbody>
 	
+
 	<tr>
-	<td>'.__("Address","sp-rm").':</td>
-	<td>'.$r[0]['address'].' #'.$r[0]['unit'].'<br>'.$r[0]['city'].' '.$r[0]['state'].'</td>
-	</tr>
-	<tr>
-	<td>'.__("Price","sp-rm").':</td>
+	<td><strong>'.__("Price","sp-rm").'</strong>:</td>
 	<td>'.$r[0]['price'].'</td>
 	</tr>';
 	
 	if($r[0]['description'] != ""){
 	$content .='<tr>
-	<td>'.__("Description","sp-rm").':</td>
+	<td><strong>'.__("Description","sp-rm").'</strong>:</td>
 	<td>'.stripslashes($r[0]['description']).'</td>
 	</tr>';	
 		
@@ -79,7 +102,7 @@ function sp_rm_show_available_listings($atts){
 	if($features[0] != ""){
 		
 		$content .='<tr>
-	<td>'.__("Features","sp-rm").':</td>
+	<td><strong>'.__("Features","sp-rm").'</strong>:</td>
 	<td><table>';	
 		
 	
@@ -179,5 +202,9 @@ function sp_rm_show_available_listings($atts){
 	$content .='</div>';
 	return $content;
 }
+ if ($_GET['listing_id'] != "") {
+add_filter('wp_title', 'sp_rm_listing_title');
+
+ }
 add_shortcode( 'rental_listing', 'sp_rm_show_available_listings' );
 ?>

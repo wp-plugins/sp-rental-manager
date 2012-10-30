@@ -173,7 +173,7 @@ function SpRmOptionsPage(){
 	  
 	
 	
-	$content .='  <tr>
+	$content .='  '.sp_rm_premium_settings().'<tr>
     <td width="300"><strong>'.__("Google Maps API Key","sp-rm").'</strong><br><em>'.__("Use this funciton only if you want to integrate google maps into your posts. Remove it to disable google maps!","sp-rm").' </em></td>
     <td><input type="text" name="sp_rm_gmap_api"  value="'.get_option('sp_rm_gmap_api').'"  size=80"> <a href="https://code.google.com/apis/console/" target="_blank">Click here to get a key</a></td>
   </tr>
