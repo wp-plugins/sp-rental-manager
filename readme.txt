@@ -42,7 +42,7 @@ Premium Features
 * Click on the options to configure.
 * Follow the shortcode instructions.
 
-* Show Rental Listings [sp_rm_show_available_listings]
+* Show Rental Listings [rental_listing]
 * Show Rental Listings for specific development [rental_listing development="X"]  Where X is the ID of your development
 * Rental Application page: [rental_listing]
 
