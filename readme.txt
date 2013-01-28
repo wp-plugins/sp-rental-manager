@@ -44,7 +44,7 @@ Premium Features
 
 * Show Rental Listings [rental_listing]
 * Show Rental Listings for specific development [rental_listing development="X"]  Where X is the ID of your development
-* Rental Application page: [rental_listing]
+* Rental Application page: [sp_rm_listing_applications]
 
 == Screenshots ==
 
