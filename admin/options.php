@@ -51,13 +51,28 @@ $content .='<div style="padding:5px;margin:5px;background-color:pink;color:red;f
 $content .='<div style="padding:5px;margin:5px;background-color:pink;color:red;font-weight:bold">Your thank you page is missing! <a href="admin.php?page=SpRm">click here to update the url.</a></div>';
 }
 	
-		
+		do_action('sp_rm_error_message');
 	
 	
 $content .='	<div style="padding:10px 10px 30px 10px">
-  <a class="button" href="admin.php?page=SpRm">'.__("Edit Options","sp-rm").'</a>
-<a class="button" href="admin.php?page=sp-rm-applications">'.__("Applications","sp-rm").'</a>
-<a class="button" href="admin.php?page=sp-rm-developments">'.__("Listing","sp-rm").'</a>
+  <a class="button" href="admin.php?page=SpRm">'.__("Edit Options","sp-rm").'</a>';
+  
+  
+  if(class_exists('sprm_FormBuilderUser')){
+	  $content .=' <a class="button" href="admin.php?page=sp-rm-custom-applications">'.__("Applications","sp-rm").'</a> '; 
+  }else{
+	 $content .=' <a class="button" href="admin.php?page=sp-rm-applications">'.__("Applications","sp-rm").'</a> '; 
+  }
+  $content .='
+
+<a class="button" href="admin.php?page=sp-rm-developments">'.__("Listing","sp-rm").'</a>';
+
+$menu_filter = '';
+$menu_filter .= apply_filters('sp_rm_menu_item', $menu_filter);
+
+
+
+$content .=''.$menu_filter .'
   </div> ';	
 	
 	return $content;
@@ -105,17 +120,17 @@ function SpRmOptionsPage(){
 	
 	
 	
-	$content .='<h1>Options Page</h1>'. SpRmNavigationMenu().'';
+echo '<h1>Options Page</h1>'. SpRmNavigationMenu().'';
 
 	
 	
 
 
-	$content .='<h2>Settings</h2>
+	echo '<h2>Settings</h2>
 	';
 	if(RM_PREMIUM != 1 && get_option("sp_rm_cdm_ignore") == 1){
 	
-	$content .='	
+echo '	
 	<div style="border:1px solid #CCC;padding:5px;margin:5px;background-color:#eaf0ea; border-radius:10px">
 	<p><strong>Upgrade to the premium version today to get enhanced features and support. Features include: Multiple photos for listings,export all users of a property,google maps integration!</strong> <br />
 <br />
@@ -124,7 +139,7 @@ function SpRmOptionsPage(){
 
 }
 
-	$content .='
+echo '
 	
 	<form action="admin.php?page=SpRm&save_mmis=1" method="post">
 	 <table class="wp-list-table widefat fixed posts" cellspacing="0">
@@ -173,7 +188,7 @@ function SpRmOptionsPage(){
 	  
 	
 	
-	$content .='  '.sp_rm_premium_settings().'<tr>
+	 echo '  '.sp_rm_premium_settings().'<tr>
     <td width="300"><strong>'.__("Google Maps API Key","sp-rm").'</strong><br><em>'.__("Use this funciton only if you want to integrate google maps into your posts. Remove it to disable google maps!","sp-rm").' </em></td>
     <td><input type="text" name="sp_rm_gmap_api"  value="'.get_option('sp_rm_gmap_api').'"  size=80"> <a href="https://code.google.com/apis/console/" target="_blank">Click here to get a key</a></td>
   </tr>
@@ -186,20 +201,24 @@ function SpRmOptionsPage(){
 	  
   }
   
-  
-  $content .='
+ 
+  echo '
     <tr>
     <td>&nbsp;</td>
     <td><input type="submit" name="save_options" value="'.__("Save Options","sp-rm").'"></td>
   </tr>
-</table>
-</form>
+</table>';
+
+ do_action('sprm_options_page');
+
+
+echo '</form>
 	
 	';
 	
 	
 	
-	echo $content;
+
 }
 }
 ?>

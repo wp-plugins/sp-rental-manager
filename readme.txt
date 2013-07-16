@@ -4,7 +4,7 @@ Donate link: http://smartypantsplugins.com/donate/
 Tags: house rentals, apartment rentals, rentals, rent, rental application, application manager, rental plugin
 Requires at least: 2.0.2
 Tested up to: 3.5.0
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 
 A Rentals management plugin for companies that rent houses or apartments.
 
@@ -34,6 +34,7 @@ Premium Features
 * Integrate google maps into your listing view page
 * More to come! 
 * Click here to  learn more about the premium version: http://smartypantsplugins.com/sp-rental-manager-plugin/
+* Custom form builder allows you to build the application the way you want!
 
 == Installation ==
 
@@ -87,3 +88,7 @@ Premium Features
 * Title tags are now shown on listing page
 * Added breadcrumb support
 * Release required for future premium versions as well
+
+= 1.1.2 =
+* ReCaptcha integration
+* Major updates for premium version which includes form builder!

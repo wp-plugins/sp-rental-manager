@@ -81,9 +81,7 @@ $r = $wpdb->get_results("SELECT *  FROM ".$wpdb->prefix . "sp_rm_applications wh
   </tr>
 </table>
 <br>
-
-
-	 <table class="wp-list-table widefat fixed posts" cellpadding="4" cellspacing="0" width="80%" border="1" bordercolor="#CCC" >
+<table class="wp-list-table widefat fixed posts" cellpadding="4" cellspacing="0" width="80%" border="1" bordercolor="#CCC" >
   <tr>
     <td><strong>Previous Address:</strong></td>
     <td>'.stripslashes($address2['address']).'</td>
@@ -555,6 +553,14 @@ To <input type="text" name="employ2[to]" size="10"></td>
 </form></div>
 ';
 	
+	
+	$application_filter = '';
+	$application_filter = apply_filters('sprm_custom_application',$application_filter,$rental);
+	
+	if($application_filter != ''){
+	unset($content);
+	$content = $application_filter;	
+	}
 	return $content;
 	
 }

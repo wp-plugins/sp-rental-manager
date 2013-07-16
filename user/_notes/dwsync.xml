@@ -6,7 +6,13 @@
 <file name="applications.php" server="havredegracerental.com//home/www/havredegracerental.com/html/" local="129956667790497592" remote="129956818800000000" Dst="2" />
 <file name="shortcodes.php" server="havredegracerental.com//home/www/havredegracerental.com/html/" local="129956659625320570" remote="129956818800000000" Dst="2" />
 <file name="widgets.php" server="havredegracerental.com//home/www/havredegracerental.com/html/" local="129720658422218176" remote="129956769600000000" Dst="2" />
-<file name="applications.php" server="dlg360.com//public_html/wordpress/" local="129956667790497592" remote="129956667000000000" Dst="2" />
-<file name="shortcodes.php" server="dlg360.com//public_html/wordpress/" local="129960806838505775" remote="129960806400000000" Dst="2" />
-<file name="widgets.php" server="dlg360.com//public_html/wordpress/" local="129720658422218176" remote="129956637000000000" Dst="2" />
+<file name="applications.php" server="dlg360.com//public_html/wordpress/" local="130168311475585129" remote="130168311600000000" Dst="2" />
+<file name="shortcodes.php" server="dlg360.com//public_html/wordpress/" local="129960806838505775" remote="130167405000000000" Dst="2" />
+<file name="widgets.php" server="dlg360.com//public_html/wordpress/" local="129720658422218176" remote="130167405000000000" Dst="2" />
+<file name="applications.php" server="dlg360.com//public_html/new/wp-content/" local="129956667790497592" remote="130044817800000000" Dst="1" />
+<file name="shortcodes.php" server="dlg360.com//public_html/new/wp-content/" local="129960806838505775" remote="130044817800000000" Dst="1" />
+<file name="widgets.php" server="dlg360.com//public_html/new/wp-content/" local="129720658422218176" remote="130044817800000000" Dst="1" />
+<file name="applications.php" server="dlg360.com//public_html/new3/" local="129956667790497592" remote="130132075200000000" Dst="2" />
+<file name="shortcodes.php" server="dlg360.com//public_html/new3/" local="129960806838505775" remote="130132075200000000" Dst="2" />
+<file name="widgets.php" server="dlg360.com//public_html/new3/" local="129720658422218176" remote="130132075200000000" Dst="2" />
 </dwsync>

@@ -237,8 +237,16 @@ echo  ''. $portfolio_list_dev .'
 
 if($_GET['id'] != ""){
 	
+	  if(class_exists('sprm_FormBuilder')){
+		  
+		  global $sprm_FormBuilder;
+		echo $sprm_FormBuilder->ApplicationView($r[0]['id']);  
+	  }else{
+		echo  sp_rm_show_applications($r[0]['id']);  
+	  }
 	
-	echo  sp_rm_show_applications($r[0]['id']);
+	
+	
 	
 }
 
@@ -352,8 +360,15 @@ function sp_rm_view_developments(){
 			$ree = $wpdb->get_results("SELECT *  FROM ".$wpdb->prefix . "sp_rm_applications where property = ".$r[$i]['id']."", ARRAY_A);		
 		
 		echo '<tr>
-		<td>'.$r[$i]['id'].'</td>
-		<td>'.count($ree).'</td>
+		<td>'.$r[$i]['id'].'</td>';
+		
+		  if(class_exists('sprm_FormBuilderUser')){
+			global $sprm_FormBuilder;
+			 echo '<td>'.$sprm_FormBuilder->applicationCount($r[$i]['id']).'</td>'; 
+		  }else{
+			  echo '<td>'.count($ree).'</td>';
+		  }
+		echo '
 		<td>'.$r[$i]['name'].'</td>
 		<td>'.$r[$i]['address'].'</td>
 		<td><a  class="button" href="admin.php?page=sp-rm-developments&function=delete-listing&id='.$r[$i]['id'].'">'.__("Delete","sp-rm").'</a>  
