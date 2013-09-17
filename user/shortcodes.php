@@ -67,7 +67,7 @@ function sp_rm_show_available_listings($atts){
 		$img = '<div id="sp_rm_gallery">
 	
 		<div id="sp_rm_gallery_main" >
-		<img src="'.content_url().'/plugins/sp-rental-manager/thumbs.php?src='.$r[0]['photo'].'&w='.get_option('sp_rm_list_thumb_size_w').'&h='.get_option('sp_rm_list_thumb_size_h').'&zc=3" >
+		<img src="'.sp_rm_thumbnail($r[0]['photo'],get_option('sp_rm_list_thumb_size_w'), get_option('sp_rm_list_thumb_size_h')).'" >
 		</div>
 		</div>';	
 			}
@@ -177,7 +177,7 @@ function sp_rm_show_available_listings($atts){
 			
 			$img = '<a  href="?listing_id='.$r[$i]['id'].''.sp_rm_check_permalinks().'"><img width="75" src="'.get_bloginfo("wpurl").'/wp-content/plugins/sp-rental-manager/images/no_house.jpg"></a>';
 		}else{
-		$img = '<a  href="?listing_id='.$r[$i]['id'].''.sp_rm_check_permalinks().'"><img width="75" src="'.content_url().'/plugins/sp-rental-manager/thumbs.php?src='.$r[$i]['photo'].'&w='.get_option('sp_rm_thumb_size_w').'&h='.get_option('sp_rm_thumb_size_h').'"></a>';	
+		$img = '<a  href="?listing_id='.$r[$i]['id'].''.sp_rm_check_permalinks().'"><img width="75" src="'.sp_rm_thumbnail($r[$i]['photo'],get_option('sp_rm_list_thumb_size_w'), get_option('sp_rm_list_thumb_size_h')).'"></a>';	
 			
 		}
 		$content .='<tr>

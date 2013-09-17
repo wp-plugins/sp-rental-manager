@@ -1,4 +1,12 @@
 <?php
+function sp_rm_thumbnail($url,$w,$h){
+	global $wpdb;
+	$params = array('width' => 400, 'height' => $h,'width' => $w, 'crop' => true);
+
+			return bfi_thumb($url, $params);
+}
+
+
 
 function dlgAdminEmail($subject,$body,$to){
 	

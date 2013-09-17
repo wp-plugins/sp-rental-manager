@@ -4,7 +4,7 @@ Plugin Name: SP Rental Manager
 Plugin URI: http://www.smartypantsplugins.com
 Description: A wordpress plugin to manage rental properties
 Author: SmartyPants
-Version: 1.1.2
+Version: 1.1.3
 Author URI: http://www.smartypantsplugins.com
 */
 
@@ -12,7 +12,7 @@ load_plugin_textdomain( 'sp-rm', false, dirname( plugin_basename( __FILE__ ) ) .
 
 
 $rm_preu_ver = 'Free version';
-
+include 'includes/thumbs.php';
 include 'includes/functions.php';
 include 'includes/mail.php';
 include 'admin/options.php';

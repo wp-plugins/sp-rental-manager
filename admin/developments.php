@@ -188,7 +188,7 @@ echo  ''. $portfolio_list_dev .'
 
 	<input type="file" id=photo" name="photo" /><br>';
 	if($r[0]['photo'] != ""){
-		echo  '<img src="'.content_url().'/plugins/sp-rental-manager/thumbs.php?src='.$r[0]['photo'].'&w=200&h=150" width="150" class="imgsrc">';
+		echo  '<img src="'.sp_rm_thumbnail($r[0]['photo'], 200, 150).'"  class="imgsrc">';
 	}else{
 		echo '<img src="" class="imgsrc">';
 	}
