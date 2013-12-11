@@ -90,7 +90,7 @@ function SpRmOptionsPage(){
 		update_option( 'sp_rm_application_link',esc_html($_POST['sp_rm_application_link']) ); 
 		update_option( 'sp_rm_application_ty',esc_html($_POST['sp_rm_application_ty']) ); 
 		update_option( 'sp_rm_application_emails',esc_html($_POST['sp_rm_application_emails']) ); 
-		update_option( 'sp_rm_application_disclaimer',esc_html($_POST['sp_rm_application_disclaimer']) ); 
+		update_option( 'sp_rm_application_disclaimer',$_POST['sp_rm_application_disclaimer'] ); 
 		
 		
 		update_option( 'sp_rm_list_thumb_size_w',esc_html($_POST['sp_rm_list_thumb_size_w']) ); 
