@@ -151,9 +151,9 @@ function sp_rm_show_available_listings($atts){
 	
 	
 	if($dev != ""){
-	$r = $wpdb->get_results("SELECT *  FROM ".$wpdb->prefix . "sp_rm_rentals where did = '".$dev."'", ARRAY_A);			
+	$r = $wpdb->get_results("SELECT *  FROM ".$wpdb->prefix . "sp_rm_rentals where did = '".$dev."' and status = 0", ARRAY_A);			
 	}else{
-	$r = $wpdb->get_results("SELECT *  FROM ".$wpdb->prefix . "sp_rm_rentals order by did,name", ARRAY_A);				
+	$r = $wpdb->get_results("SELECT *  FROM ".$wpdb->prefix . "sp_rm_rentals  where  status = 0 order by did,name", ARRAY_A);				
 	}
 	
 	

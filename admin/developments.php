@@ -330,6 +330,17 @@ function sp_rm_view_developments(){
 	
 		unset($r);
 	
+	
+	
+			if($_GET['function'] == 'publish'){
+				$insert['status'] = 	$_GET['publish'];	
+	
+	
+	
+		$where['id'] =$_GET['id'] ;
+	    $wpdb->update(  "".$wpdb->prefix . "sp_rm_rentals", $insert , $where );	
+			}
+			
 			$r = $wpdb->get_results("SELECT *  FROM  ".$wpdb->prefix . "sp_rm_rentals order by name", ARRAY_A);	
 			
 			
@@ -350,7 +361,7 @@ function sp_rm_view_developments(){
 <th >'.__("Applications","sp-rm").'</th>
 <th>'.__("Name","sp-rm").'</th>
 <th>'.__("Address","sp-rm").'</th>
-<th>'.__("Action","sp-rm").'</th>
+<th width="450">'.__("Action","sp-rm").'</th>
 </tr>
 	</thead><tbody>';	
 	
@@ -358,8 +369,14 @@ function sp_rm_view_developments(){
 	for($i=0; $i<count($r); $i++){
 		
 			$ree = $wpdb->get_results("SELECT *  FROM ".$wpdb->prefix . "sp_rm_applications where property = ".$r[$i]['id']."", ARRAY_A);		
-		
-		echo '<tr>
+		if($r[$i]['status'] == 0){
+	$publish = '<a class="button" style="margin-left:20px" href="admin.php?page=sp-rm-developments&function=publish&publish=1&id='.$r[$i]['id'].'">'.__("Unpublish","sp-rm").'</a>';	
+		$bg= '';
+	}else{
+		$publish = '<a class="button" style="margin-left:20px" href="admin.php?page=sp-rm-developments&function=publish&publish=0&id='.$r[$i]['id'].'" >'.__("Publish","sp-rm").'</a>';		
+	$bg= ' style="background-color:#ffe2e2" ';
+	}
+		echo '<tr '.$bg.'>
 		<td>'.$r[$i]['id'].'</td>';
 		
 		  if(class_exists('sprm_FormBuilderUser')){
@@ -368,12 +385,16 @@ function sp_rm_view_developments(){
 		  }else{
 			  echo '<td>'.count($ree).'</td>';
 		  }
+	
+	
+	
 		echo '
 		<td>'.$r[$i]['name'].'</td>
 		<td>'.$r[$i]['address'].'</td>
 		<td><a  class="button" href="admin.php?page=sp-rm-developments&function=delete-listing&id='.$r[$i]['id'].'">'.__("Delete","sp-rm").'</a>  
 	<a class="button" style="margin-left:20px" href="admin.php?page=sp-rm-developments&function=manage-listing&id='.$r[$i]['id'].'">'.__("View","sp-rm").'</a> 
-		<a class="button" style="margin-left:20px" href="../wp-content/plugins/sp-rental-manager/download.php?function=pdf-all&id='.$r[$i]['id'].'" target="_blank">'.__("Download All Applications","sp-rm").'</a>
+		<a class="button" style="margin-left:20px" href="../wp-content/plugins/sp-rental-manager/download.php?function=pdf-all&id='.$r[$i]['id'].'" target="_blank">'.__("Download Applications","sp-rm").'</a>
+	'.	$publish .'
 	</td>
 		</tr>';
 		

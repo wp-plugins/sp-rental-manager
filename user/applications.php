@@ -290,7 +290,7 @@ function SpRmApplicationForm(){
  </tr>';		
 		
 	}else{
-		$r = $wpdb->get_results("SELECT *  FROM ".$wpdb->prefix . "sp_rm_rentals order by did,name", ARRAY_A);
+		$r = $wpdb->get_results("SELECT *  FROM ".$wpdb->prefix . "sp_rm_rentals  where status = 0 order by did,name", ARRAY_A);
 		
 		$rental .= '  <tr>
     <td>'.__("Property Interested In","sp-rm").':</td>

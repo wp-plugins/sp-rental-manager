@@ -128,6 +128,7 @@ class BFI_Image_Editor_Imagick extends WP_Image_Editor_Imagick {
 
 
 /*
+
  * Enhanced GD Image Editor
  */
 class BFI_Image_Editor_GD extends WP_Image_Editor_GD {
