@@ -240,10 +240,10 @@ function SpRmApplicationForm(){
 	
 	global $wpdb,$current_user;
 
-	
-	
+		
+
 	if($_POST['submit-app'] != ""){
-	
+
 	
 	$i['name'] = $_POST['applicant-name'];
 	$i['s'] =  sp_rm_encrypt($_POST['ssn']);
@@ -259,7 +259,7 @@ function SpRmApplicationForm(){
 	$i['ref2'] = serialize($_POST['ref2']);
 	$i['rel1'] = serialize($_POST['rel1']);	
 	$i['date'] = date("Y-m-d");
-	$i['property'] = $_POST['property'];
+	$i['property'] = $_POST['rental-property'];
 	$i['sign'] = $_POST['sign'];
 
 	$wpdb->insert(  ''.$wpdb->prefix .'sp_rm_applications',$i );
@@ -294,7 +294,7 @@ function SpRmApplicationForm(){
 		
 		$rental .= '  <tr>
     <td>'.__("Property Interested In","sp-rm").':</td>
-    <td colspan="3"><select name="property" class="required"><option value="">'.__("Select a property","sp-rm").'</option>';
+    <td colspan="3"><select name="rental-property" class="required"><option value="">'.__("Select a property","sp-rm").'</option>';
  
 
 		
