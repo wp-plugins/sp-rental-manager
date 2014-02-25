@@ -4,7 +4,7 @@ Donate link: http://smartypantsplugins.com/donate/
 Tags: house rentals, apartment rentals, rentals, rent, rental application, application manager, rental plugin
 Requires at least: 2.0.2
 Tested up to: 3.5.0
-Stable tag: 1.1.6
+Stable tag: 1.1.7
 
 A Rentals management plugin for companies that rent houses or apartments.
 
@@ -14,7 +14,7 @@ Smarty Pants Rental Manager is a WordPress plugin that allows a rental agency to
 
 Check out the premium features on our website!
 
-*http://smartypantsplugins.com/sp-rental-manager-plugin/
+*http://smartyrentalmanager.com/
 
 
 Free Features
@@ -33,7 +33,7 @@ Premium Features
 * Ability to upload multiple images
 * Integrate google maps into your listing view page
 * More to come! 
-* Click here to  learn more about the premium version: http://smartypantsplugins.com/sp-rental-manager-plugin/
+* Click here to  learn more about the premium version: http://smartyrentalmanager.com/
 * Custom form builder allows you to build the application the way you want!
 
 == Installation ==
@@ -105,3 +105,8 @@ Premium Features
 = 1.1.5 =
 
 * Added the ability to unpublish a listing
+
+= 1.1.7 =
+
+* Added a responsive layout for premium users.
+* Added a name field on listings

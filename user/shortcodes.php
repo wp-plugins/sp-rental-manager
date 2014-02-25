@@ -157,7 +157,9 @@ function sp_rm_show_available_listings($atts){
 	}
 	
 	
-				$content .='
+	
+	
+				$listings_template .='
 
 	
 	  <table class="wp-list-table widefat fixed posts" cellspacing="0">
@@ -180,9 +182,9 @@ function sp_rm_show_available_listings($atts){
 		$img = '<a  href="?listing_id='.$r[$i]['id'].''.sp_rm_check_permalinks().'"><img width="75" src="'.sp_rm_thumbnail($r[$i]['photo'],get_option('sp_rm_list_thumb_size_w'), get_option('sp_rm_list_thumb_size_h')).'"></a>';	
 			
 		}
-		$content .='<tr>
+		$listings_template .='<tr>
 		<td>'.	$img .'</td>
-		<td><a href="?listing_id='.$r[$i]['id'].''.sp_rm_check_permalinks().'">'.$r[$i]['address'].'  '.$r[$i]['unit'].', '.$r[$i]['city'].' '.$r[$i]['state'].'</a></td>
+		<td><a href="?listing_id='.$r[$i]['id'].''.sp_rm_check_permalinks().'">'.$r[$i]['address'].''.$r[$i]['address'].'  '.$r[$i]['unit'].', '.$r[$i]['city'].' '.$r[$i]['state'].'</a></td>
 	<td>'.$r[$i]['price'].'</td>
 	
 		<td>
@@ -193,11 +195,15 @@ function sp_rm_show_available_listings($atts){
 		
 				}
 				
-				$content .= '</tbody></table>
+				$listings_template .= '</tbody></table>
 				
 	
 				
 				';
+				
+				
+		$listings_template = apply_filters('sp_rm_listings_template',$listings_template, $r,$atts);
+		$content .=$listings_template;
 	}
 	$content .='</div>';
 	return $content;
