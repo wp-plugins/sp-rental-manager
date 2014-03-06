@@ -146,9 +146,9 @@ function sp_rm_show_available_listings($atts){
 	
 	
 	
-	
+	if(isset($atts['development'])){
 	$dev = $atts['development'];
-	
+	}
 	
 	if($dev != ""){
 	$r = $wpdb->get_results("SELECT *  FROM ".$wpdb->prefix . "sp_rm_rentals where did = '".$dev."' and status = 0", ARRAY_A);			
