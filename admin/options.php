@@ -143,7 +143,7 @@ echo '
 
 echo '
 	
-	<form action="admin.php?page=SpRm&save_mmis=1" method="post">
+	<form action="admin.php?page=SpRm&save_mmis=1" method="post" enctype="multipart/form-data">
 	 <table class="wp-list-table widefat fixed posts" cellspacing="0">
        <tr>
     <td width="300"><strong>'.__("List view image","sp-rm").'</strong><br><em>'.__("Size of the thumbnail for the listing of all available apartments.","sp-rm").'</td>
@@ -181,7 +181,7 @@ echo '
     <td><input type="checkbox" name="dlgrl_enable_ssn"   value="1" '. $enablessn.'> </td>
   </tr>
   
-    <tr>
+   <tr>
     <td width="300"><strong>'.__("Disclaimer","sp-rm").'</strong><br><em>'.__("This is the disclaimer on the application (legal terms)","sp-rm").'</em></td>
     <td><textarea style="width:100%;height:100px" name="sp_rm_application_disclaimer" >'.stripslashes(get_option('sp_rm_application_disclaimer')).'</textarea> </td>
   </tr>';

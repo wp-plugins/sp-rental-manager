@@ -24,7 +24,11 @@ function sp_rm_listing_title($id){
 	  if ($_GET['listing_id'] != "") {
           $r = $wpdb->get_results("SELECT *  FROM ".$wpdb->prefix . "sp_rm_rentals where id = '".$wpdb->escape($_GET['listing_id'])."'", ARRAY_A);	
 	
-	return ''.$r[0]['address'].' #'.$r[0]['unit'].', '.$r[0]['city'].' '.$r[0]['state'].'';
+		if($r[0]['unit'] != ''){
+		$unit = '#'.$r[0]['unit'].'';	
+		}
+	
+	return ''.$r[0]['address'].' '.$r[0]['address2'].' '.$unit.', '.$r[0]['city'].' '.$r[0]['state'].'';
         } else {
             return $post_data['the_title'];
         }
@@ -44,10 +48,12 @@ function sp_rm_show_available_listings($atts){
 		
 	$r = $wpdb->get_results("SELECT *  FROM ".$wpdb->prefix . "sp_rm_rentals where id = '".$wpdb->escape($_GET['listing_id'])."'", ARRAY_A);			
 	
-	
+		if($r[0]['unit'] != ''){
+		$unit = '#'.$r[0]['unit'].'';	
+		}
 	$content .='
 	<div class="sp_rp_bread">
-	<span><a href="?listing_id=">Back to Listings</a></span> &raquo; <span>'.$r[0]['address'].' #'.$r[0]['unit'].' '.$r[0]['city'].' '.$r[0]['state'].'</span>
+	<span><a href="?listing_id=">Back to Listings</a></span> &raquo; <span>'.$r[0]['address'].' '.$unit .' '.$r[0]['city'].' '.$r[0]['state'].'</span>
 	</div>
 	<div class="rm_listing_main_img">
 	
@@ -119,17 +125,31 @@ function sp_rm_show_available_listings($atts){
 	$content .='
 	<tr>
 	<td></td>
-	<td><a class="button" style="margin-left:20px" href="'.get_option('sp_rm_application_link').'?listing_id='.$r[0]['id'].''.sp_rm_check_permalinks().'">'.__("Submit An Application","sp-rm").'</a></td>
+	<td>';
+	if(get_option('sprm_download_application') != ''){
+	$content .='<a class="button" style="margin-left:20px" href="'.get_option('sprm_download_application').'" target="_blank">'.__("Download Application","sp-rm").'</a>';	
+	}else{
+	$content .='<a class="button" style="margin-left:20px" href="'.get_option('sp_rm_application_link').'?listing_id='.$r[0]['id'].''.sp_rm_check_permalinks().'">'.__("Submit An Application","sp-rm").'</a>';
+	}
+	
+	$content .='</td>
+	
 	</tr>
 	
 	
 	
 	</tbody></table>';
 	  if(RM_PREMIUM == 1){
+		  if(sp_rm_get_meta('rental_lat',$r[0]['id']) != '' && sp_rm_get_meta('rental_lon',$r[0]['id']) != ''){
+		 $geo = ''.sp_rm_get_meta('rental_lat',$r[0]['id']).','.sp_rm_get_meta('rental_lon',$r[0]['id']).'';
+		  }else{
+			$geo = false;  
+		  }
+		  
 		  $content .='
 	<div id="sm_rm_gmaps">
-	
-	'. sp_rm_display_google_map(''.$r[0]['address'].' #'.$r[0]['unit'].' '.$r[0]['city'].' '.$r[0]['state'].'').'
+		
+	'. sp_rm_display_google_map(''.$r[0]['address'].' #'.$r[0]['unit'].' '.$r[0]['city'].' '.$r[0]['state'].'',$geo ).'
 	</div>
 	
 	';	
@@ -182,6 +202,12 @@ function sp_rm_show_available_listings($atts){
 		$img = '<a  href="?listing_id='.$r[$i]['id'].''.sp_rm_check_permalinks().'"><img width="75" src="'.sp_rm_thumbnail($r[$i]['photo'],get_option('sp_rm_list_thumb_size_w'), get_option('sp_rm_list_thumb_size_h')).'"></a>';	
 			
 		}
+		
+		if(get_option('sprm_download_application') != ''){
+		$app = 	get_option('sprm_download_application');
+		}else{
+		$app = 	''.get_option('sp_rm_application_link').'?listing_id='.$r[$i]['id'].''.sp_rm_check_permalinks().'';	
+		}
 		$listings_template .='<tr>
 		<td>'.	$img .'</td>
 		<td><a href="?listing_id='.$r[$i]['id'].''.sp_rm_check_permalinks().'">'.$r[$i]['address'].''.$r[$i]['address2'].'  '.$r[$i]['unit'].', '.$r[$i]['city'].' '.$r[$i]['state'].'</a></td>
@@ -189,7 +215,7 @@ function sp_rm_show_available_listings($atts){
 	
 		<td>
 	<a class="button" style="margin-left:20px" href="?listing_id='.$r[$i]['id'].''.sp_rm_check_permalinks().'">'.__("View","sp-rm").'</a>
-	<a class="button" style="margin-left:20px" href="'.get_option('sp_rm_application_link').'?listing_id='.$r[$i]['id'].''.sp_rm_check_permalinks().'">'.__("Apply","sp-rm").'</a>
+	<a class="button" style="margin-left:20px" href="'.$app .'">'.__("Apply","sp-rm").'</a>
 	 </td>
 		</tr>';
 		

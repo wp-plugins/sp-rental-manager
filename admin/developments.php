@@ -109,7 +109,7 @@ if($_POST['save'] != ""){
 		}else{
 		$wpdb->insert( "".$wpdb->prefix . "sp_rm_rentals",$insert );
 		}
-	
+	do_action('wp_rm_development_action',$_POST['id']);
 	sp_rm_redirect('admin.php?page=sp-rm-developments');
 	
 }
@@ -221,8 +221,10 @@ echo  ''. $portfolio_list_dev .'
 	}
 	echo '<div id="sp_rm_feature_end"></div>
 	</td>
-	</tr>
-  <tr>
+	</tr>';
+	
+	do_action('wp_rm_development_form',$r);
+  echo '<tr>
   
 	<td></td>
 	<td><input type="submit" name="save" value="'.__("Save","sp-rm").'"></td>
