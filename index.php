@@ -4,7 +4,7 @@ Plugin Name: SP Rental Manager
 Plugin URI: http://www.smartypantsplugins.com
 Description: A wordpress plugin to manage rental properties
 Author: SmartyPants
-Version: 1.2.0
+Version: 1.2.1
 Author URI: http://www.smartypantsplugins.com
 */
 

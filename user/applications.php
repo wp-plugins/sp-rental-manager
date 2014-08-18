@@ -284,7 +284,7 @@ function SpRmApplicationForm(){
 			$r = $wpdb->get_results("SELECT *  FROM ".$wpdb->prefix . "sp_rm_rentals where id = '".$wpdb->escape($_GET['listing_id']) ."'", ARRAY_A);	
 			
 			$rental = '  <tr>
-    <td>'.__("Property Interested In","sp-rm").'Property Interested In:</td>
+    <td>'.__("Property Interested In","sp-rm").'</td>
     <td colspan="3"><input type="hidden" name="property"  value="'.$_GET['listing_id'].'"> '.$r[0]['address'].' #'.$r[0]['unit'].', '.$r[0]['city'].' '.$r[0]['state'].'</td>
  
  </tr>';		
